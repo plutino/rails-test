@@ -1,4 +1,4 @@
-#Test App
+# Test App
 
 Rails test app to reproduce [this issue](https://github.com/rails/rails/issues/28827)
 
