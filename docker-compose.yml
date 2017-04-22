@@ -1,0 +1,21 @@
+version: '3'
+
+services:
+  rake:
+    build: .
+    image: rails_test
+    volumes:
+      - ./log:/app/log
+    environment:
+      - RAILS_ENV=development
+      - DATABASE_URL=mysql2://mysql
+    depends_on:
+      - mysql
+    command: "bundle exec rake $TASKS"
+
+  mysql:
+    image: mysql:5.6
+    environment:
+      - MYSQL_ALLOW_EMPTY_PASSWORD=yes
+    volumes:
+      - ./tmp/db:/var/lib/mysql
